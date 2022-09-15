@@ -43,6 +43,25 @@ class Show extends Component {
         sessionStorage.removeItem("record");
     }
 
+    search(){
+        let input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("student-record");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
     render() {
         const studentRecord = sessionStorage.getItem("record");
 
@@ -55,18 +74,21 @@ class Show extends Component {
                         <div className="pt-3 pb-3 text-success"><h6>{(studentRecord !== null)?studentRecord:null}</h6></div>
                     </div>
                 </div>
-                { (this.state.allStudents.length > 0)?<table className="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Surname</th>
-                        <th scope="col">IdentificationNo</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">DateOfBirth</th>
-                        <th scope="col">RegisteredOn</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                    </thead>
+
+                { (this.state.allStudents.length > 0)?<>
+                    <div className="mb-4 col-5"><input type="text" id="search" className="form-control" onKeyUp={this.search} placeholder="Search for names.." title="Type in a name"/></div>
+                    <table className="table" id="student-record">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">IdentificationNo</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">DateOfBirth</th>
+                                <th scope="col">RegisteredOn</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
                     <tbody>
                     {this.state.allStudents.map((value, i) =>
                         <tr key={i}>
@@ -81,7 +103,8 @@ class Show extends Component {
                     )
                     }
                     </tbody>
-                </table>:<h5>No data found</h5>}
+                </table>
+                </>:<h5>No data found</h5>}
             </div>:<div className="col-6 mx-auto mt-5"><Oval type="Circles" color="#4287f5" height={50} width={50}/></div>
         );
     }
