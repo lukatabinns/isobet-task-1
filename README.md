@@ -12,9 +12,9 @@ Step 3. create .env file and configure database connection
 
 Step 4. run command "php artisan migrate" to run database schemas
 
-Step 6. execute command "npm install"
+Step 5. execute command "npm install"
 
-Step 8. run php artisan serve
+Step 6. run php artisan serve
 
 Step 7. execute command "npm run dev"
 
