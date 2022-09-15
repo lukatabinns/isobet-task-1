@@ -1,36 +1,23 @@
-# Getting started
+# iso-student-recording-system
 
-* Clone the repo
-* Create a .env file from .env.example
-* If using Docker:
-    * Use the Docker commands below to build, mount and SSH to your container
-    * Remember to run terminal commands from within the container
-* `composer install`
-* `npm install`
-* `php artisan key:generate`
-* `php artisan migrate --seed`
-* `npm run dev` or `npm run watch` for hot reloading of edited files
+This mini project demonstrates the operation of recording student's data digital. Users are able to view, create and edit student records
 
-# Docker commands
+# Steps to run project
 
-Open a terminal in repo folder to execute these commands:
+Step 1. Downloading project and mount it on a development stack such as Xampp
 
-* First time build: `docker-compose build --no-cache`
-* Mount container: `docker-compose up -d`
-* SSH into the container: `docker exec -it nifty /bin/bash`
+Step 2. Open command line and cd to project then run composer install
 
-It's easier to start and stop the container in the Docker interface than to mount and unmount each time.
+Step 3. create .env file and configure database connection
 
-* Unmount container (if you need to): `docker-compose down`
+Step 4. run command "php artisan migrate" to run database schemas
 
-If mounting `db` fails on Windows, run `chmod 044 .docker/mysql/my.cnf` or manually set `my.cnf` to read-only and try again.
+Step 5. execute command "npm install"
 
-# Notes
+Step 6. run php artisan serve
 
-## Decimal places
+Step 7. execute command "npm run dev"
 
-* Benchmarking scores (12, 9) xxx.xxxxxxxx
- * Elements (11, 9) xx.xxxxxxxx
-* Weightings that must be <= 1 (10, 9) x.xxxxxxxx
-* Percentages (12, 9) xxx.xxxxxxxx
-* Financial amounts (21, 9) xxx,xxx,xxx,xxx.xxxxxxxx
+Step 8. You will be asked to generate app key click button to generate and refresh page. the project should now be running
+
+Step 9. for unit testing run command php vendor/bin/phpunit
