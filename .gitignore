@@ -1,0 +1,25 @@
+# Laravel
+/node_modules
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Generated files
+/public/css
+/public/fonts
+/public/js
+/public/mix-manifest.json
+
+# Docker
+.docker/mysql-files
+docker-compose.override.yml
+
+# Editor settings
+/.idea
+
